@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        function getUserChoice() {
+            let userChoice = prompt("What is your selection?");
+            userChoice = userChoice.toLowerCase();
+            while (!(userChoice == 'rock' || userChoice == 'paper' || userChoice == 'scissors')) {
+                userChoice = prompt("Wrong input. What is your selection?");
+                userChoice = userChoice.toLowerCase();
+            }
+            return userChoice;
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function getComputerChoice() {
+            const compChoice = getRandomInt(3);
+            let compChoiceEng;
+            if (compChoice === 0) {
+                compChoiceEng = "rock"
+            } else if (compChoice === 1) {
+                compChoiceEng = "paper"
+            } else if (compChoice === 2) {
+                compChoiceEng = "scissors"
+            }
+            return compChoiceEng;
+        }
+
+        function playRound(playerSelection, computerSelection) {
+
+            let result;
+
+            if (playerSelection == computerSelection) {
+                result = "draw";
+            }
+            else if (playerSelection == "rock" && computerSelection == "paper") {
+                result = "computer wins";
+            }
+            else if (playerSelection == "rock" && computerSelection == "scissors") {
+                result = "player wins";
+            }
+            else if (playerSelection == "paper" && computerSelection == "rock") {
+                result = "player wins";
+            }
+            else if (playerSelection == "paper" && computerSelection == "scissors") {
+                result = "computer wins";
+            }
+            else if (playerSelection == "scissors" && computerSelection == "rock") {
+                result = "computer wins";
+            }
+            else if (playerSelection == "scissors" && computerSelection == "paper") {
+                result = "player wins";
+            }
+
+            return result;
+
+        }
+
+        function game() {
+
+            let playerwins = 0;
+            let computerwins = 0;
+
+            while (playerwins < 3 && computerwins < 3) {
+                //console.log(playerwins < 3 || computerwins < 3);
+                let userChoice = getUserChoice();
+                //console.log(userChoice);
+                let computerChoice = getComputerChoice();
+                //console.log(computerChoice);
+
+                let result = playRound(userChoice, computerChoice);
+                //console.log(result);
+
+                if (result == "player wins") {
+                    playerwins++;
+                    //console.log(playerwins);
+                } else if (result == "computer wins") {
+                    computerwins++;
+                    //console.log(computerwins);
+                }
+
+                console.log("The player chose " + userChoice + ". The computer chose " + computerChoice + ". " + result);
+
+            }
+
+            if (playerwins > computerwins) {
+                console.log("The player has won the game");
+            } else if (computerwins > playerwins) {
+                console.log("The computer has won the game");
+            }
+
+        }
+
+        game();
+
+        /*OLD CODE
+        let userChoice = getUserChoice();
+        let computerChoice = getComputerChoice();
+    
+        console.log("The user chooses " + userChoice);
+        console.log("The computer chooses " + computerChoice);
+        console.log("The result is " + playRound(userChoice, computerChoice));
+        */
+
+        /*SECOND PART OF CODE
+        
+        let playerwins = 0;
+        let computerwins = 0;
+        let totalgames = 0;
+        let result;
+        
+    
+        while(totalgames < 3){
+        
+          console.log(totalgames);
+    
+        let firstNumber = prompt("Type number one");
+        let secondNumber = prompt("Type number two");
+    
+        
+    
+        if(firstNumber > secondNumber){
+          result = "first wins";
+          console.log("first wins");
+        }
+        else if(secondNumber > firstNumber){
+          result = "second wins";
+        }
+        else if(firstNumber == secondNumber){
+          result = "draw";
+        }
+    
+        if(result == "first wins"){
+          playerwins++;
+          totalgames++;
+        }
+        else if(result == "second wins"){
+          computerwins++;
+          totalgames++;
+        }
+        
+    
+        }
+    
+        console.log("The best out of three is complete.");
+        if(playerwins > computerwins){
+          console.log("The first number has won");     
+        }else if(computerwins > playerwins){
+          consoloe.log("The second number has won");
+        }
+      
+    
+      */
+
+
+
+    </script>
+</body>
+
+</html>
