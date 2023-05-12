@@ -5,20 +5,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 
 <body>
 
+    <div class="heading">Rock, Paper, Scissors</div>
+    <div class="result-container">
+        <div class="column-container">
+            <div id="player-heading" class="result-heading">Player<div id="player-score" class="result-heading">: 0
+                </div>
+            </div>
+            <div id="selection-picture-1" class="selection-container"></div>
+        </div>
+        <div id="game-result" class="result-writing result-heading">
+            Play
+        </div>
+        <div class="column-container">
+            <div id="computer-heading" class="result-heading">Computer<div id="computer-score" class="result-heading">:
+                    0</div>
+            </div>
+            <div id="selection-picture-2" class="selection-container"></div>
+        </div>
+    </div>
+
+    <div id="select-choice" class="selection-heading result-heading">Select your choice</div>
+    <div id="rps-container" class="image-container">
+        <div id="rock-container" class="column-container">
+            <img id="rock" src="rock.png">
+            <div class="result-heading">Rock</div>
+        </div>
+
+        <div id="paper-container" class="column-container">
+            <img id="paper" src="paper.png">
+            <div class="result-heading">Paper</div>
+        </div>
+
+        <div id="scissors-container" class="column-container">
+            <img id="scissors" src="scissors.png">
+            <div class="result-heading">Scissors</div>
+        </div>
+
+
+    </div>
+
     <script>
 
-        function getUserChoice() {
-            let userChoice = prompt("What is your selection?");
-            userChoice = userChoice.toLowerCase();
-            while (!(userChoice == 'rock' || userChoice == 'paper' || userChoice == 'scissors')) {
-                userChoice = prompt("Wrong input. What is your selection?");
-                userChoice = userChoice.toLowerCase();
-            }
+        function getUserChoice(userChoice) {
             return userChoice;
         }
 
@@ -44,25 +78,25 @@
             let result;
 
             if (playerSelection == computerSelection) {
-                result = "draw";
+                result = "Draw";
             }
             else if (playerSelection == "rock" && computerSelection == "paper") {
-                result = "computer wins";
+                result = "Computer Wins";
             }
             else if (playerSelection == "rock" && computerSelection == "scissors") {
-                result = "player wins";
+                result = "Player Wins";
             }
             else if (playerSelection == "paper" && computerSelection == "rock") {
-                result = "player wins";
+                result = "Player Wins";
             }
             else if (playerSelection == "paper" && computerSelection == "scissors") {
-                result = "computer wins";
+                result = "Computer Wins";
             }
             else if (playerSelection == "scissors" && computerSelection == "rock") {
-                result = "computer wins";
+                result = "Computer Wins";
             }
             else if (playerSelection == "scissors" && computerSelection == "paper") {
-                result = "player wins";
+                result = "Player Wins";
             }
 
             return result;
@@ -74,7 +108,7 @@
             let playerwins = 0;
             let computerwins = 0;
 
-            while (playerwins < 3 && computerwins < 3) {
+            while (playerwins < 5 && computerwins < 5) {
                 //console.log(playerwins < 3 || computerwins < 3);
                 let userChoice = getUserChoice();
                 //console.log(userChoice);
@@ -104,70 +138,158 @@
 
         }
 
-        game();
+        //game();
 
-        /*OLD CODE
-        let userChoice = getUserChoice();
-        let computerChoice = getComputerChoice();
-    
-        console.log("The user chooses " + userChoice);
-        console.log("The computer chooses " + computerChoice);
-        console.log("The result is " + playRound(userChoice, computerChoice));
-        */
+        function displayComputerChoice() {
+            computerChoice = getComputerChoice();
+            if (computerChoice == 'rock') {
+                computerPicture.src = "rock.png";
+                computerSelectionContainer.appendChild(computerPicture);
+            } else if (computerChoice == 'paper') {
+                computerPicture.src = "paper.png";
+                computerSelectionContainer.appendChild(computerPicture);
+            } else if (computerChoice == "scissors") {
+                computerPicture.src = "scissors.png";
+                computerSelectionContainer.appendChild(computerPicture);
+            }
 
-        /*SECOND PART OF CODE
-        
-        let playerwins = 0;
-        let computerwins = 0;
-        let totalgames = 0;
-        let result;
-        
-    
-        while(totalgames < 3){
-        
-          console.log(totalgames);
-    
-        let firstNumber = prompt("Type number one");
-        let secondNumber = prompt("Type number two");
-    
-        
-    
-        if(firstNumber > secondNumber){
-          result = "first wins";
-          console.log("first wins");
         }
-        else if(secondNumber > firstNumber){
-          result = "second wins";
-        }
-        else if(firstNumber == secondNumber){
-          result = "draw";
-        }
-    
-        if(result == "first wins"){
-          playerwins++;
-          totalgames++;
-        }
-        else if(result == "second wins"){
-          computerwins++;
-          totalgames++;
-        }
-        
-    
-        }
-    
-        console.log("The best out of three is complete.");
-        if(playerwins > computerwins){
-          console.log("The first number has won");     
-        }else if(computerwins > playerwins){
-          consoloe.log("The second number has won");
-        }
-      
-    
-      */
 
+        const rockSelector = document.querySelector("#rock");
+        const paperSelector = document.querySelector("#paper");
+        const scissorsSelector = document.querySelector("#scissors");
+        const gameResult = document.querySelector("#game-result");
+        const userSelectionContainer = document.querySelector("#selection-picture-1");
+        const computerSelectionContainer = document.querySelector("#selection-picture-2");
+        const computerPicture = document.createElement("img");
+        const userPicture = document.createElement("img");
+        const playAgain = document.createElement("div");
+        const userScoreDiv = document.querySelector("#player-score");
+        const computerScoreDiv = document.querySelector("#computer-score");
+        const rpsContainer = document.querySelector("#rps-container");
+        const rockContainer = document.querySelector("#rock-container");
+        const paperContainer = document.querySelector("#paper-container");
+        const scissorsContainer = document.querySelector("#scissors-container");
+        const selectYourChoice = document.querySelector("#select-choice");
+        let userChoice;
+        let computerChoice;
+        let roundResult;
+        let userScore = 0;
+        let computerScore = 0;
+
+        playAgain.textContent = "Play Again"
+        playAgain.classList.add("result-heading");
+        playAgain.classList.add("result-writing");
+        playAgain.setAttribute('id', 'play-again-button');
+
+        function resetPage(){
+                rpsContainer.removeChild(rockContainer);
+                rpsContainer.removeChild(paperContainer);
+                rpsContainer.removeChild(scissorsContainer);
+                rpsContainer.appendChild(playAgain);
+                selectYourChoice.textContent = "";
+                
+        }
+
+        function checkWin(){
+
+            if(userScore == 5){
+                gameResult.textContent = "You Win";
+                resetPage();
+                
+            }
+
+            if(computerScore == 5){
+                gameResult.textContent = "Computer Wins";
+                resetPage();
+            }
+
+            
+        }
+
+        playAgain.addEventListener('click', () => {
+            selectYourChoice.textContent = "Select your choice";
+            rpsContainer.removeChild(playAgain);
+            rpsContainer.appendChild(rockContainer);
+            rpsContainer.appendChild(paperContainer);
+            rpsContainer.appendChild(scissorsContainer);
+            userScore = 0;
+            computerScore = 0;
+            userScoreDiv.textContent = ": " + userScore;
+            computerScoreDiv.textContent = ": " + computerScore;
+            gameResult.textContent = "Play";
+        })
+
+        rockSelector.addEventListener('click', () => {
+            // console.log(getUserChoice("rock"));
+            userPicture.src = "rock.png";
+            userSelectionContainer.appendChild(userPicture);
+            displayComputerChoice();
+            userChoice = "rock";
+            console.log("User choice is " + userChoice + ". Computer choice is " + computerChoice);
+            roundResult = playRound(userChoice, computerChoice)
+            //gameResult.textContent = roundResult;
+            if (roundResult == 'Computer Wins') {
+                computerScore++;
+            } else if (roundResult == 'Player Wins') {
+                userScore++;
+            }
+            userScoreDiv.textContent = ": " + userScore;
+            computerScoreDiv.textContent = ": " + computerScore;
+            checkWin();
+
+        });
+
+        paperSelector.addEventListener('click', () => {
+            //console.log(getUserChoice("paper"));
+            userPicture.src = "paper.png";
+            userSelectionContainer.appendChild(userPicture);
+            displayComputerChoice();
+            userChoice = "paper";
+            console.log("User choice is " + userChoice + ". Computer choice is " + computerChoice);
+            roundResult = playRound(userChoice, computerChoice)
+           // gameResult.textContent = roundResult;
+            if (roundResult == 'Computer Wins') {
+                computerScore++;
+            } else if (roundResult == 'Player Wins') {
+                userScore++;
+            }
+            userScoreDiv.textContent = ": " + userScore;
+            computerScoreDiv.textContent = ": " + computerScore;
+            checkWin();
+
+        });
+
+        scissorsSelector.addEventListener('click', () => {
+            //console.log(getUserChoice("scissors"));
+            userPicture.src = "scissors.png";
+            userSelectionContainer.appendChild(userPicture);
+            displayComputerChoice();
+            userChoice = "scissors";
+            console.log("User choice is " + userChoice + ". Computer choice is " + computerChoice);
+            roundResult = playRound(userChoice, computerChoice)
+            //gameResult.textContent = roundResult;
+            if (roundResult == 'Computer Wins') {
+                computerScore++;
+            } else if (roundResult == 'Player Wins') {
+                userScore++;
+            }
+            userScoreDiv.textContent = ": " + userScore;
+            computerScoreDiv.textContent = ": " + computerScore;
+            checkWin();
+
+        });
+
+
+
+
+
+        //result.textContent = "Test";
 
 
     </script>
+
+
 </body>
 
 </html>
