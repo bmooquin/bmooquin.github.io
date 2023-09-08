@@ -80,6 +80,16 @@ function keypadClick(number){
         updateMainScreen();
     }
 
+     if(result == Number(displayNumber.join(""))){
+        console.log(result == Number(displayNumber.join("")));
+        //clearDisplayNumber();
+        //clearNumsToOperate();
+        result = null;
+     }
+
+     
+
+
     //displayNumber[0] != 0
 
 
@@ -122,7 +132,6 @@ keypadEqual.addEventListener("click",function(){
     if(result == mainScreen.textContent){
         return;
      }
-
 
 
     if(numsToOperate.length != 2){
