@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Now!</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="maincontainer">
+        <div class="lionbar">
+            <div class="logostrip">
+                <span><img src="assets/running-lion (1).png" alt="a lion symbol"></span>
+                <span>DIN</span>
+            </div>
+            <div class="creditbar c1"></div>
+            <div class="creditbar c2">
+                <span><a href="https://www.flaticon.com/free-icons/lion" title="lion icons">Lion icons created by Freepik - Flaticon</a> </span>
+                <span>Photo by <a href="https://unsplash.com/@keyursphotography?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Keyur Nandaniya</a> on <a href="https://unsplash.com/photos/brown-lion-B0VdY1ydF-Q?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></span>
+            </div>
+        </div>
+        <div class="infosection">
+            <div class="textsection">
+                <div class="popout">
+                    <p class="standardtext">Welcome to the Odin Lion Safari! This is not a real online service. If you want to adventure in the plains of Africa, then get started now. Experience the adventure of your wildest dreams. Sign up now to get started.</p>
+                    <p class="standardtext">You will never regret this!</p>
+                </div>
+            </div>
+            <div class="textsection">
+                <div class="upperline"><img src="assets/lion.png" alt="a lion"> Let's Go!</div>
+                <!-- <div class="lowerline"></div>
+                <div class="lheading"><span>Let's Go!</span></div> -->
+
+                    <div class="inputline">
+                        <div class="labelcontainer"><input class ="inputbox" type="text" name="fname" id="fname" placeholder="First Name" form="finalform" autocomplete="off" required pattern="([']?[a-zA-Z]+['\-]?[a-zA-Z]+|[']?[a-zA-Z])"><label class="inputlabel" for="fname">First Name</label></div>
+                        <div class="labelcontainer"><input class ="inputbox" type="text" name="lname" id="lname" placeholder="Last Name" form="finalform" autocomplete="off" required pattern="([']?[a-zA-Z]+['\-]?[a-zA-Z]+|[']?[a-zA-Z])"><label class="inputlabel" for="lname">Last Name</label></div>
+                        <div class="labelcontainer"><input class ="inputbox" type="text" name="email" id="email" placeholder="Email" form="finalform" autocomplete="off" required pattern="([a-zA-Z0-9_]+[\.]?[a-zA_Z0-9_]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,}|[a-zA-Z0-9_]@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,})"><label for="email" class="inputlabel">Email</label></div>
+                    </div>
+                    
+                <div class="inputline">
+                    <div class="labelcontainer"><input class ="inputbox" type="tel" name="tel" id="tel" placeholder="Telephone Number" form="finalform" autocomplete="off" required pattern="[0-9]{10,11}"><label for="tel" class="inputlabel">Telephone Number</label></div>
+                    <div class="labelcontainer"><input class ="inputboxjava1" type="password" name="fpwd" id="fpwd" placeholder="Password" form="finalform" autocomplete="off" required><label for="fpwd" class="inputlabeljava1">Password</label></div>
+                    <div class="labelcontainer"><input class ="inputboxjava2" type="password" name="spwd" id="spwd" placeholder="Confirm Password" form="finalform" autocomplete="off" required><label for="spwd" class="inputlabeljava2">Passwords Must Match</label></div>
+                </div>
+            </div>
+
+            <div class="textsection">
+                <div class="popout">
+                    <!-- <form action="https://httpbin.org/post" method="post" id="finalform" onsubnmit ="return false"> -->
+                        <form action="https://httpbin.org/post" method="post" id="finalform" onsubmit="return false">
+                        <p class="buttonpara"><button type="submit">Create Account</button></p>
+                        <p class="finalline">Already have an account? <a href="#">Log in</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
